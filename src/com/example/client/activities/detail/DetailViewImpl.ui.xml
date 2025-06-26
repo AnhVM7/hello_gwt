@@ -31,5 +31,7 @@
 			<g:Label text="Gender: " />
 			<g:Label ui:field="genderLabel" />
 		</g:HorizontalPanel>
+		
+		<g:Button ui:field="backButton" text="Back" />
 	</g:VerticalPanel>
 </ui:UiBinder>
