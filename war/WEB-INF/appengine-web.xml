@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <sessions-enabled>true</sessions-enabled>
+  <instance-class>F4</instance-class>
+  <static-files>
+    <include path="**"/>    
+    <include path="**.cache.*" expiration="60d"/>
+    <include path="**.gwt.rpc"/>
+    <include path="/resources/*" expiration="30d"/>
+    <include path="/soicteducation/*" expiration="60d"/>
+    <include path="/soicteducationstudent/*" expiration="60d"/>
+    <include path="/soicteducationteacher/*" expiration="60d"/>
+    <include path="/soictcompany/*" expiration="60d"/>
+    <include path="/components/*" expiration="60d"/>
+    <include path="/fullcalendar/*" expiration="60d"/>
+    <include path="/js/*" expiration="60d"/>
+    <include path="/fonts/*" expiration="60d"/>
+    <include path="/jspdf/*" expiration="60d"/>
+    <include path="/rollups/*" expiration="60d"/>
+    <include path="/ckeditor/*" expiration="60d"/>
+    <include path="/images/*" expiration="60d"/>
+    <include path="/sample/*" expiration="60d"/>
+  </static-files>
+  
+  <runtime>java17</runtime>
+  <app-engine-apis>true</app-engine-apis>
+</appengine-web-app>

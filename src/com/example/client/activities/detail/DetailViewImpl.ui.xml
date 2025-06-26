@@ -1,0 +1,35 @@
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<!-- Vertical panel để chứa các thông tin chi tiết -->
+	<g:VerticalPanel ui:field="detailPanel">
+		<g:Label text="User Detail" />
+
+		<!-- Hiển thị thông tin chi tiết người dùng -->
+		<g:HorizontalPanel>
+			<g:Label text="Full Name: " />
+			<g:Label ui:field="fullNameLabel" />
+		</g:HorizontalPanel>
+
+		<g:HorizontalPanel>
+			<g:Label text="Email: " />
+			<g:Label ui:field="emailLabel" />
+		</g:HorizontalPanel>
+
+		<g:HorizontalPanel>
+			<g:Label text="Age: " />
+			<g:Label ui:field="ageLabel" />
+		</g:HorizontalPanel>
+
+		<g:HorizontalPanel>
+			<g:Label text="Address: " />
+			<g:Label ui:field="addressLabel" />
+		</g:HorizontalPanel>
+
+		<g:HorizontalPanel>
+			<g:Label text="Gender: " />
+			<g:Label ui:field="genderLabel" />
+		</g:HorizontalPanel>
+	</g:VerticalPanel>
+</ui:UiBinder>
