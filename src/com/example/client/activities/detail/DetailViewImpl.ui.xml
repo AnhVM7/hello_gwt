@@ -2,33 +2,31 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-	<!-- Vertical panel để chứa các thông tin chi tiết -->
 	<g:VerticalPanel ui:field="detailPanel">
-		<g:Label text="User Detail" />
+		<g:Label text="User Detail" styleName="h4 mb-4 text-primary"/>
 
-		<!-- Hiển thị thông tin chi tiết người dùng -->
-		<g:HorizontalPanel>
-			<g:Label text="Full Name: " />
+		<g:HorizontalPanel styleName="mb-2">
+			<g:Label text="Full Name: " styleName="fw-bold me-2"/>
 			<g:Label ui:field="fullNameLabel" />
 		</g:HorizontalPanel>
 
-		<g:HorizontalPanel>
-			<g:Label text="Email: " />
+		<g:HorizontalPanel styleName="mb-2">
+			<g:Label text="Email: " styleName="fw-bold me-2"/>
 			<g:Label ui:field="emailLabel" />
 		</g:HorizontalPanel>
 
-		<g:HorizontalPanel>
-			<g:Label text="Age: " />
+		<g:HorizontalPanel styleName="mb-2">
+			<g:Label text="Age: " styleName="fw-bold me-2"/>
 			<g:Label ui:field="ageLabel" />
 		</g:HorizontalPanel>
 
-		<g:HorizontalPanel>
-			<g:Label text="Address: " />
+		<g:HorizontalPanel styleName="mb-2">
+			<g:Label text="Address: " styleName="fw-bold me-2"/>
 			<g:Label ui:field="addressLabel" />
 		</g:HorizontalPanel>
 
-		<g:HorizontalPanel>
-			<g:Label text="Gender: " />
+		<g:HorizontalPanel styleName="mb-4">
+			<g:Label text="Gender: " styleName="fw-bold me-2"/>
 			<g:Label ui:field="genderLabel" />
 		</g:HorizontalPanel>
 		

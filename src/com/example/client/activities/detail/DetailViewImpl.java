@@ -36,14 +36,10 @@ public class DetailViewImpl extends Composite implements DetailView {
 	private UserDTO user;
 	public DetailViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
-//		detailPanel.clear();
 		
-		Long userId = getUserIdFromUrl();
+		detailPanel.getElement().addClassName("container mt-4 p-4 border rounded shadow-sm bg-light");
 		
-		if (userId != null) {
-			getUserInfo(userId);
-		}
-		
+		backButton.getElement().addClassName("btn btn-warning");
 		backButton.addClickHandler(new ClickHandler() {
 
 			@Override
@@ -53,60 +49,15 @@ public class DetailViewImpl extends Composite implements DetailView {
 			}	
 		});
 	}
-	
+
 	public void setData(UserDTO user) {
-		this.user = user;
-		
-	}
-//	
-//	public UserDTO getUser() {
-//		if(validate())
-//			return null;
-//		return this.user;
-//	}
-//	
-//	private boolean validate() {
-//		
-//		return true;
-//	}
-	
-	private Long getUserIdFromUrl() {
-        String hash = Window.Location.getHash();
-        if (hash.contains("detail")) {
-            String[] params = hash.split("\\?");
-            if (params.length > 1) {
-                String[] keyValue = params[1].split("=");
-                if (keyValue.length > 1 && keyValue[0].equals("id")) {
-                	Long userId = Long.parseLong(keyValue[1]);
-                    return userId;
-                }
-            }
-        }
-        return null;
-	}
-	
-	private void getUserInfo(Long userId) {
-		GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
-		greetingService.getUserInfo(userId, new AsyncCallback<UserDTO>() {
-
-			@Override
-			public void onSuccess(UserDTO result) {
-				fullNameLabel.setText(result.getFullName());
-                emailLabel.setText(result.getEmail());
-                ageLabel.setText(String.valueOf(result.getAge()));
-                addressLabel.setText(result.getAddress());
-                genderLabel.setText(result.getGender());	
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			
-			
-		});
+	    this.user = user;
+	    
+	    fullNameLabel.setText(user.getFullName());
+	    emailLabel.setText(user.getEmail());
+	    ageLabel.setText(String.valueOf(user.getAge()));
+	    addressLabel.setText(user.getAddress());
+	    genderLabel.setText(user.getGender());
 	}
 	
 }

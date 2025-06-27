@@ -1,1 +1,1 @@
-java_dev_appserver.sh war/
+java_dev_appserver.cmd ./war/

@@ -37,7 +37,6 @@ public class Hello_gwt implements EntryPoint {
 	public static final ClientFactory CLIENT_FACTORY = new ClientFactoryImpl();
 
 	public void onModuleLoad() {
-		Window.alert("11111");
 		
 		SimplePanel display = new SimplePanel();
 		AsyncActivityMapper activityMapper = new NormalAppActivityMapper(CLIENT_FACTORY);
@@ -54,13 +53,11 @@ public class Hello_gwt implements EntryPoint {
 			
 			@Override
 			public void onSuccess(String result) {
-				Window.alert("aaaaa");
 				
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("bbbb");
 				
 			}
 		});

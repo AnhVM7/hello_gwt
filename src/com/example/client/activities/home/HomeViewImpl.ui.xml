@@ -1,21 +1,25 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<g:VerticalPanel>
-		<g:Label text="Full Name:" />
+	<g:VerticalPanel ui:field="homePanel">
+		<g:Label text="Full Name:" styleName="form-label fw-bold mt-2"/>
 		<g:TextBox ui:field="fullNameTextBox" />
 
-		<g:Label text="Email:" />
+		<g:Label text="Email:" styleName="form-label fw-bold mt-2"/>
 		<g:TextBox ui:field="emailTextBox" />
 
-		<g:Label text="Age:" />
+		<g:Label text="Age:" styleName="form-label fw-bold mt-2"/>
 		<g:TextBox ui:field="ageTextBox" />
 
-		<g:Label text="Address:" />
+		<g:Label text="Address:" styleName="form-label fw-bold mt-2"/>
 		<g:TextBox ui:field="addressTextBox" />
 
-		<g:Label text="Gender:" />
+		<g:Label text="Gender:" styleName="form-label fw-bold mt-2"/>
 		<g:ListBox ui:field="genderListBox" />
 
-		<g:Button ui:field="saveButton" text="Save" />
+		<g:HorizontalPanel>
+			<g:Button ui:field="backButton" text="Back" />
+			<g:Button ui:field="saveButton" text="Save" />
+		</g:HorizontalPanel>
+		
 	</g:VerticalPanel>
 </ui:UiBinder>

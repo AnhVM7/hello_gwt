@@ -11,6 +11,7 @@ import com.example.client.Hello_gwt;
 import com.example.client.activities.ClientFactory;
 import com.example.client.activities.basic.widget.UserWidget;
 import com.example.client.activities.detail.DetailPlace;
+import com.example.client.activities.home.HomePlace;
 import com.example.shared.model.User;
 import com.example.shared.model.UserDTO;
 import com.google.gwt.core.client.GWT;
@@ -50,7 +51,17 @@ public class ListViewImpl extends Composite implements ListView {
 	public ListViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-//		userTable.getElement().addClassName("styled-table");
+		Button addNewUserButton = new Button("Add New User");
+		addNewUserButton.setStyleName("btn btn-success");
+		addNewUserButton.addClickHandler(new ClickHandler() {
+		    @Override
+		    public void onClick(ClickEvent event) {
+		        Hello_gwt.CLIENT_FACTORY.getPlaceController().goTo(new HomePlace());
+		    }
+		});
+		
+		userListPanel.insert(addNewUserButton, 1);
+		
 		userTable.getElement().addClassName("table table-success table-striped");
 
 		userTable.setText(0, 0, "Full Name");
@@ -126,41 +137,60 @@ public class ListViewImpl extends Composite implements ListView {
 
 		// Button View
 		Button viewButton = new Button("View");
-		viewButton.getElement().addClassName("table-button");
+		viewButton.getElement().addClassName("btn btn-info");
 		viewButton.addClickHandler(new ClickHandler() {
+//			@Override
+//			public void onClick(ClickEvent event) {
+//
+//	            Long userId = user.getId();
+//
+//	            Place detailPlace = new DetailPlace(userId);
+//	            Window.alert(((DetailPlace) detailPlace).getToken());
+//	            
+//	            Hello_gwt.CLIENT_FACTORY.getPlaceController().goTo(detailPlace);
+//				
+////				UserWidget userWidget = new UserWidget();
+////				userWidget.setData(user);
+////				Modal popup = new Modal();
+////				popup.add(userWidget);
+////				popup.getElement().addClassName("modal-popup");
+////				popup.show();
+//
+//			}
+			
 			@Override
-			public void onClick(ClickEvent event) {
-
-	            Long userId = user.getId();
-
-	            Place detailPlace = new DetailPlace(userId);
-	            Window.alert(((DetailPlace) detailPlace).getToken());
-	            
-	            Hello_gwt.CLIENT_FACTORY.getPlaceController().goTo(detailPlace);
-				
-//				UserWidget userWidget = new UserWidget();
-//				userWidget.setData(user);
-//				Modal popup = new Modal();
-//				popup.add(userWidget);
-//				popup.getElement().addClassName("modal-popup");
-//				popup.show();
-
-			}
+		    public void onClick(ClickEvent event) {
+		        HomePlace place = new HomePlace(user, true);
+		        Hello_gwt.CLIENT_FACTORY.getPlaceController().goTo(place);
+		    }
 		});
 
+		Button editButton = new Button("Edit");
+		editButton.getElement().addClassName("btn btn-warning");
+		editButton.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				HomePlace homePlace = new HomePlace(user, false);
+				Hello_gwt.CLIENT_FACTORY.getPlaceController().goTo(homePlace);
+				
+			}
+			
+		});
+		
 		// Button Delete
 		Button deleteButton = new Button("Delete");
-		deleteButton.getElement().addClassName("table-button");
+		deleteButton.getElement().addClassName("btn btn-danger");
 		deleteButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				if (Window.confirm("Bạn có chắc chắn muốn xóa user này không?")) {
+				if (Window.confirm("Are you want to delete this user?")) {
 
 					GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 					greetingService.deleteUser(user.getId(), new AsyncCallback<Void>() {
 						@Override
 						public void onSuccess(Void result) {
-							Window.alert("Đã xóa user thành công!");
+							Window.alert("Delete successfully");
 							clearTable();
 							fetchUsers(new AsyncCallback<List<UserDTO>>() {
 								@Override
@@ -172,14 +202,14 @@ public class ListViewImpl extends Composite implements ListView {
 
 								@Override
 								public void onFailure(Throwable caught) {
-									Window.alert("Không load lại được danh sách user!");
+									Window.alert("fail to reload list user");
 								}
 							});
 						}
 
 						@Override
 						public void onFailure(Throwable caught) {
-							Window.alert("Xóa user thất bại!");
+							Window.alert("fail to delete user");
 						}
 					});
 				}
@@ -188,6 +218,7 @@ public class ListViewImpl extends Composite implements ListView {
 
 		HorizontalPanel actionPanel = new HorizontalPanel();
 		actionPanel.add(viewButton);
+		actionPanel.add(editButton);
 		actionPanel.add(deleteButton);
 
 		userTable.setWidget(row, 5, actionPanel);

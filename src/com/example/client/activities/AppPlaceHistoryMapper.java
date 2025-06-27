@@ -51,23 +51,13 @@ public class AppPlaceHistoryMapper implements PlaceHistoryMapper {
 			return getDefaultPlace();
 		}
 		String tokenPlace = tokens[0].trim();
-		Window.alert(tokenPlace+"-222"); //in ra detail?id=5207287069147136-222
 		Place nextPlace = null;
-        if (tokenPlace.indexOf(PlaceToken.CONTACT) == 0) {
-//        	nextPlace = new ContactPlace();
+        if (tokenPlace.indexOf(PlaceToken.HOME) == 0) {
+        	nextPlace = new HomePlace();
         } else if (tokenPlace.indexOf(PlaceToken.LIST) == 0){
         	nextPlace = new ListPlace();
         } else if (tokenPlace.indexOf(PlaceToken.DETAIL) == 0) {
         	long userId = -1;
-        	Window.alert("maianh123"); //inra maianh123
-//            if (tokens.length > 1 && tokens[1].startsWith("id=")) {
-//                try {
-//                    userId = Long.parseLong(tokens[1].substring(3));
-//                    Window.alert("userId: " + userId);
-//                } catch (Exception e) {
-//
-//                }
-//            }
         	try {
         		userId = Long.parseLong(tokenPlace.substring(10));
             	Window.alert("userId: " + userId);
@@ -77,7 +67,7 @@ public class AppPlaceHistoryMapper implements PlaceHistoryMapper {
             nextPlace = new DetailPlace(userId > 0 ? userId : null);
         }
         else {
-        	nextPlace = new HomePlace();
+        	nextPlace = new ListPlace();
         }
         return nextPlace;
 	}
